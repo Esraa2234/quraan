@@ -121,8 +121,9 @@ function  getSurahs(){
 // pray yime
 let cards = document.querySelector('.cards');
 getPrayTime();
+http://api.aladhan.com/v1/timingsByCity?city=cairo&country=egypt&method=8
 function getPrayTime(){
-    fetch("http://api.aladhan.com/v1/timingsByCity?city=cairo&country=egypt&method=8")
+    fetch("https://api.aladhan.com/v1/timingsByCity?city=Cairo&country=Egypt&method=8")
     .then(response => response.json())
     .then(data =>{
         // console.log(data);
