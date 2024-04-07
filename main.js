@@ -129,8 +129,8 @@ function getPrayTime(){
         let times=  data.data.timings;
         cards.innerHTML="";
         for(let i in times){
-            console.log(i)
-            console.log(times[i]);
+            // console.log(i)
+            // console.log(times[i]);
             cards.innerHTML+= `
             <div class="card">
             <div class="circle">
