@@ -71,47 +71,46 @@ links.forEach(link => {
     })
 })
 // surah api
+// surah api
 let  surahsContainer = document.querySelector('.surahsContainer');
 getSurahs()
 function  getSurahs(){
-    fetch("https://api.alquran.cloud/v1/meta")
+    
+    fetch("https://api.quran.gading.dev/surah")
     .then((res) => res.json())
     .then((data)=>{
-// console.log(data)
-        let surahs = data.data.surahs.references;
-//console.log(surahs);
-        let numberSurahs = 114;                     
-// data.data.surahs.count;
+        let surahs = data.data;
+        let numberSurahs = surahs.length;
     surahsContainer.innerHTML = "";
     for(let i = 0; i<numberSurahs ;i++){
-        // surahs[1]
         surahsContainer.innerHTML += `
         <div class="surah">
-        <p> ${surahs[i].name}</p>
-        <p> ${surahs[i].englishName} </p>
+        <p> ${surahs[i].name.long}</p>
+        <p> ${surahs[i].name.transliteration.en} </p>
     </div>`
     }
     let surahsTitles = document.querySelectorAll(".surah");
-    // console.log(surahsTitles);
     let popup = document.querySelector(".surah-popup"),
     ayatContainer =  document.querySelector(".ayat");
     surahsTitles.forEach((title,index)=>{
         title.addEventListener("click", ()=> {
-            fetch(`https://api.alquran.cloud/v1/surah/${index + 1}`)
+            fetch(`https://api.quran.gading.dev/surah/${index + 1}`)
             .then(res => res.json())
             .then(data=>{
-                // console.log(data);
                 ayatContainer.innerHTML ="";
-                let ayat = data.data.ayahs;
+                let ayat = data.data.verses;
                 ayat.forEach(aya=>{
                     popup.classList.add('active'),
                     ayatContainer.innerHTML +=`
-                    <p> (${aya.numberInSurah}) - ${aya.text}</p>
+                    <p> (${aya.number.inSurah}) - ${aya.text.arab}</p>
                     ` 
                 })
             })
         })
     })
+
+
+    // ////////////////////////////////////////
     let  closePopup = document.querySelector('.close-popup');
     closePopup.addEventListener('click',()=>{
         popup.classList.remove('active');

@@ -17,6 +17,7 @@
 body{
     direction: rtl; 
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 ul,li{
     list-style:  none;
@@ -223,7 +224,7 @@ section  h3::before{
     transform: scale(.95);
 }
 .lec .lec-text{
-    width: calc(100% - 150px);
+    /* width: calc(100% - 150px); */
     color: #232323;
 }
 .lec img{
@@ -372,7 +373,7 @@ section  h3::before{
     padding: 20px;
     width: 100%;
     margin-top: 20px;
-    margin-right: 40px;
+    /* margin-right: 40px; */
     color: #121212;
     text-align: center;
 }
@@ -423,7 +424,8 @@ section  h3::before{
 /* responsive */
 @media (max-width: 1024px){
     .lectures-container .right, .lectures-container .left {
-        width: 98%;
+        /* width: 98%; */
+        width: 100%;
     }
     .header .bars{
         display: block;
